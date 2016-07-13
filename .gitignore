@@ -1,2 +1,4 @@
 spark-streaming/node-code/node_modules/
 venv/
+*.swp
+*.pyc
