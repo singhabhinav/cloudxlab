@@ -70,10 +70,11 @@
             }]
         });
 	    socket.on('message', function(data){
-		    var self = this;
 			data = JSON.parse(data);
-		    chart.series[0].addPoint([(new Date()).getTime(), data[1]], true, true);
-		    chart.redraw();
+            if (data[0] === 'shipped') {
+		        chart.series[0].addPoint([(new Date()).getTime(), data[1]], true, true);
+		        chart.redraw();
+            }
 	    });
     });
 </script>
