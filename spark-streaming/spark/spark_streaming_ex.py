@@ -4,18 +4,27 @@ from pyspark.streaming.kafka import KafkaUtils
 from pykafka import KafkaClient
 import json
 import sys
+import pprint
 
-def putDataToKafka(iter):
-	client = KafkaClient(hosts="e.cloudxlab.com:6667")
+def putDataToKafka(iter1):
+	client = KafkaClient(hosts="ip-172-31-13-154.ec2.internal:6667")
+	topic = client.topics['one-mindata']
+	for sr in iter1:
+		with topic.get_producer() as producer:
+			producer.produce(json.dumps(sr))
+
+def putDataToKafka1(iter1):
+	client = KafkaClient(hosts="ip-172-31-13-154.ec2.internal:6667")
 	topic = client.topics['one-mindata']
 	with topic.get_producer() as producer:
-		for record in iter:
-			print "i am here"
-			producer.produce(json.dumps(record))
+		for sr in iter1:
+			sr.pprint()
+			producer.produce(json.dumps(sr))
 
-sc = SparkContext(appName="KafkaWordCount")
-ssc = StreamingContext(sc, 0.5)
+
 zkQuorum, topic = sys.argv[1:]
+sc = SparkContext(appName="KafkaWordCount")
+ssc = StreamingContext(sc, 1)
 kvs = KafkaUtils.createStream(ssc, zkQuorum, "spark-streaming-consumer", {topic: 1})
 lines = kvs.map(lambda x: x[1])
 words = lines.flatMap(lambda line: line.split(" "))
