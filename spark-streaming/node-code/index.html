@@ -22,18 +22,24 @@
 
             },
             title: {
-                text: 'Total Order Shipped Over Time'
+                text: 'Order Shipped In One Minute Interval'
             },
             xAxis: {
                 type: 'datetime',
                 tickPixelInterval: 150,
                 title: {
-                    text: 'Time'
+                    text: 'Time',
+                    style: {
+                        fontWeight: 'bold'
+                    }
                 }
             },
             yAxis: {
                 title: {
-                    text: 'Total Order Shipped'
+                    text: 'Total Orders Shipped',
+                    style: {
+                        fontWeight: 'bold'
+                    }
                 },
                 plotLines: [{
                     value: 0,
@@ -62,13 +68,12 @@
                         time = (new Date()).getTime(),
                         i;
 
-                    for (i = -19; i <= 0; i += 1) {
+                    for (i = -3; i <= 0; i += 1) {
                         data.push({
                             x: time + i * 1000,
                             y: 0
                         });
                     }
-                    console.log(data);
                     return data;
                 }())
             }]
@@ -77,6 +82,7 @@
 			data = JSON.parse(data);
             if (data[0] === 'shipped') {
 		        chart.series[0].addPoint([(new Date()).getTime(), data[1]], true, true);
+                chart.redraw();
             }
 	    });
     });
