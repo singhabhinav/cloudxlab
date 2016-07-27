@@ -1,6 +1,7 @@
-<div id='container'></div>
+<div id='container' style="height:100%;width:100%;"></div>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script src="http://code.highcharts.com/highcharts.js"></script>
+<script src="http://code.highcharts.com/modules/exporting.js"></script>
 <script src="/socket.io/socket.io.js"></script>
 <script type="text/javascript">
     $(document).ready(function () {
@@ -21,15 +22,18 @@
 
             },
             title: {
-                text: 'Live random data'
+                text: 'Total Order Shipped Over Time'
             },
             xAxis: {
                 type: 'datetime',
-                tickPixelInterval: 150
+                tickPixelInterval: 150,
+                title: {
+                    text: 'Time'
+                }
             },
             yAxis: {
                 title: {
-                    text: 'Value'
+                    text: 'Total Order Shipped'
                 },
                 plotLines: [{
                     value: 0,
@@ -41,17 +45,17 @@
                 formatter: function () {
                     return '<b>' + this.series.name + '</b><br/>' +
                         Highcharts.dateFormat('%Y-%m-%d %H:%M:%S', this.x) + '<br/>' +
-                        Highcharts.numberFormat(this.y, 2);
+                        Highcharts.numberFormat(this.y);
                 }
             },
             legend: {
-                enabled: false
+                enabled: true
             },
             exporting: {
-                enabled: false
+                enabled: true
             },
             series: [{
-                name: 'Random data',
+                name: 'Order Shipped',
                 data: (function () {
                     // generate an array of random data
                     var data = [],
@@ -73,7 +77,6 @@
 			data = JSON.parse(data);
             if (data[0] === 'shipped') {
 		        chart.series[0].addPoint([(new Date()).getTime(), data[1]], true, true);
-		        chart.redraw();
             }
 	    });
     });
