@@ -5,8 +5,8 @@
 <script src="/socket.io/socket.io.js"></script>
 <script type="text/javascript">
     $(document).ready(function () {
-	var socket = io();
-	var series;
+	    var socket = io();
+	    var series;
         Highcharts.setOptions({
             global: {
                 useUTC: false
@@ -15,7 +15,7 @@
 
         chart = new Highcharts.Chart({
             chart: {
-		renderTo: 'container',
+		        renderTo: 'container',
                 type: 'spline',
                 animation: Highcharts.svg, // don't animate in old IE
                 marginRight: 10,
