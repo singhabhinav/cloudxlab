@@ -15,7 +15,7 @@ def pushDataInKafka(iter1):
 
 zkQuorum, topic = sys.argv[1:]
 sc = SparkContext(appName="KafkaOrderCount")
-ssc = StreamingContext(sc, 10)
+ssc = StreamingContext(sc, 60)
 kvs = KafkaUtils.createStream(ssc, zkQuorum, "spark-streaming-consumer", {topic: 1})
 lines = kvs.map(lambda x: x[1])
 status_count = lines.map(lambda line: line.split(",")[2]) \
