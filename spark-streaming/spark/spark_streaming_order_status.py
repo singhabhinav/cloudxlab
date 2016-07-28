@@ -6,12 +6,12 @@ import json
 import sys
 import pprint
 
-def pushDataInKafka(iter1):
+def pushOrderStatusInKafka(status_counts):
     client = KafkaClient(hosts="ip-172-31-13-154.ec2.internal:6667")
     topic = client.topics['one-mindata']
-    for sr in iter1:
+    for status_count in status_counts:
 	    with topic.get_producer() as producer:
-		    producer.produce(json.dumps(sr))
+		    producer.produce(json.dumps(status_count))
 
 zkQuorum, topic = sys.argv[1:]
 sc = SparkContext(appName="KafkaOrderCount")
@@ -22,6 +22,6 @@ status_count = lines.map(lambda line: line.split(",")[2]) \
               .map(lambda order_status: (order_status, 1)) \
               .reduceByKey(lambda a, b: a+b)
 status_count.pprint()
-status_count.foreachRDD(lambda rdd: rdd.foreachPartition(pushDataInKafka))
+status_count.foreachRDD(lambda rdd: rdd.foreachPartition(pushOrderStatusInKafka))
 ssc.start()
 ssc.awaitTermination()
