@@ -8,7 +8,7 @@ import pprint
 
 def pushOrderStatusInKafka(status_counts):
     client = KafkaClient(hosts="ip-172-31-13-154.ec2.internal:6667")
-    topic = client.topics['one-mindata']
+    topic = client.topics['order-one-min-data']
     for status_count in status_counts:
 	    with topic.get_producer() as producer:
 		    producer.produce(json.dumps(status_count))
