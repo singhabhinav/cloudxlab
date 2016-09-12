@@ -1,0 +1,3 @@
+- Build the JAR
+- Upload the JAR to CloudxLab web console
+- hadoop jar jar-file-name.jar my.StubDriver /data/mr/wordcount/input mr-output
