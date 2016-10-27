@@ -78,12 +78,12 @@
                 }())
             }]
         });
-	    socket.on('message', function(data){
-			data = JSON.parse(data);
+        socket.on('message', function(data){
+            data = JSON.parse(data);
             if (data[0] === 'shipped') {
-		        chart.series[0].addPoint([(new Date()).getTime(), data[1]], true, true);
+                chart.series[0].addPoint([(new Date()).getTime(), data[1]], true, true);
                 chart.redraw();
             }
-	    });
+        });
     });
 </script>
