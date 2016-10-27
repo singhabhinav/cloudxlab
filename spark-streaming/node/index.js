@@ -10,6 +10,7 @@ var client = new Client('localhost:2181', "worker-" + Math.floor(Math.random() *
 var payloads = [{ topic: topic }];
 var consumer = new HighLevelConsumer(client, payloads);
 var offset = new Offset(client);
+var port = 3010;
 
 app.get('/', function(req, res){
     res.sendfile('index.html');
@@ -27,5 +28,6 @@ consumer = consumer.on('message', function(message) {
     io.emit("message", message.value);
 });
 
-http.listen(3001, function(){
+http.listen(port, function(){
+    console.log("Running on port " + port)
 });
