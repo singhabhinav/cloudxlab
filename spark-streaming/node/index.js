@@ -10,7 +10,7 @@ var client = new Client('localhost:2181', "worker-" + Math.floor(Math.random() *
 var payloads = [{ topic: topic }];
 var consumer = new HighLevelConsumer(client, payloads);
 var offset = new Offset(client);
-var port = 3010;
+var port = 3001;
 
 app.get('/', function(req, res){
     res.sendfile('index.html');

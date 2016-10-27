@@ -10,6 +10,9 @@
         Highcharts.setOptions({
             global: {
                 useUTC: false
+            },
+            lang: {
+                thousandsSep: ','
             }
         });
 
@@ -22,7 +25,7 @@
 
             },
             title: {
-                text: 'Order Shipped In One Minute Interval'
+                text: 'Orders Shipped In One Minute Interval'
             },
             xAxis: {
                 type: 'datetime',
@@ -50,8 +53,7 @@
             tooltip: {
                 formatter: function () {
                     return '<b>' + this.series.name + '</b><br/>' +
-                        Highcharts.dateFormat('%Y-%m-%d %H:%M:%S', this.x) + '<br/>' +
-                        Highcharts.numberFormat(this.y);
+                        Highcharts.dateFormat('%Y-%m-%d %H:%M:%S', this.x) + '<br/>' + this.y;
                 }
             },
             legend: {
@@ -61,7 +63,7 @@
                 enabled: true
             },
             series: [{
-                name: 'Order Shipped',
+                name: 'Orders Shipped',
                 data: (function () {
                     // generate an array of random data
                     var data = [],
