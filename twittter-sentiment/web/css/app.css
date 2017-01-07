@@ -1,0 +1,49 @@
+.copyright {
+    position: relative;
+    bottom: 0;
+}
+.header {
+	color: #B22222;
+	font-size: 12px;
+	font-weight: bold;
+}
+.subheader {
+	color: #696969;
+	font-size: 12px;
+}
+.chartHeight {
+	height: 430px;
+}
+.sentimentHeight {
+	height: 385px;
+}
+.scrollbar{
+	position: relative;
+	overflow: auto;
+}
+.textColor {
+	color: #B22222;
+}
+.dashboarHeader {
+	font-size: 20px;
+	color: #B22222;
+}
+.textbox {
+	width: 37%;
+	height: 34px;
+	padding: 6px 12px;
+	font-size: 14px;
+	color: #555;
+	background-color: #fff;
+	background-image: none;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	line-height: 1.42857143;
+}
+.displayBlock {
+	display: block;
+}
+.alert-neutral {
+	color: rgb(169, 68, 66);
+    background-color: rgb(130, 222, 222);
+    border-color: rgb(235, 204, 209);}
