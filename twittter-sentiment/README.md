@@ -1,4 +1,4 @@
-#Twitter Streaming Project
+#Twitter Sentiment Project
 
 #Prerequisite
 1. Download and Install Node.js.
