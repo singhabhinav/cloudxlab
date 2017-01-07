@@ -34,5 +34,5 @@ sentimentTopicConsumer.on('message', function (message) {
 });
 
 server.listen(8888, function(){
-  console.log("Use this url to access the application - http://localhost:8888/web" )
+  console.log("Server started on port - " + 8888)
 });
