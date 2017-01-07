@@ -7,11 +7,11 @@
 	"socket.io": "1.7.2",
 	"kafka-node": "0.4.0"
   },
-  "main": "web\\server.js",
+  "main": "web/server.js",
   "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-	"start": "node web\\server.js"
+	"start": "node web/server.js"
   },
   "author": "Manjunath Kempaiah",
   "license": "BSD"
