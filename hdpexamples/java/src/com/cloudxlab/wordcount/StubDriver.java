@@ -25,8 +25,6 @@ public class StubDriver {
 		// 	System.exit(-1);
 		// }
 
-
-
 		JobConf conf = new JobConf();
 		Job job = new Job(conf, "wordcount");
 		//or simply:

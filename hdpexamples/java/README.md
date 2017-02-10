@@ -2,7 +2,7 @@
 ~~~~
 ## These are the examples of Map-Reduce
 git clone https://github.com/singhabhinav/cloudxlab.git
-cd cloudxlab/hdpexamples/
+cd cloudxlab/hdpexamples/java
 ant jar
 
 To Run wordcount MapReduce, use:
