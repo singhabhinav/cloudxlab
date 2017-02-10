@@ -45,7 +45,7 @@ public class StubDriver {
 //		job.setMapOutputKeyClass(Text.class);
 //		job.setMapOutputValueClass(LongWritable.class);
 
-FileInputFormat.addInputPath(job, new Path("/data/wordcount/input/big.txt"));
+FileInputFormat.addInputPath(job, new Path("/data/mr/wordcount/input/big.txt"));
 FileOutputFormat.setOutputPath(job, new Path("javamrout"));
 
 //		FileInputFormat.addInputPath(job, new Path(args[1]));
