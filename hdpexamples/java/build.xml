@@ -1,0 +1,41 @@
+<project>
+
+    <target name="clean">
+        <delete dir="build"/>
+    </target>
+
+	<property name="lib.dir" value="lib"/>
+	<path id="classpath">
+	        <fileset dir="${lib.dir}" includes="**/*.jar"/>
+	</path>
+
+    <target name="compile">
+        <mkdir dir="build/classes"/>
+        <javac srcdir="src" destdir="build/classes" classpathref="classpath"/>
+    </target>
+
+    <target name="jar" depends="compile">
+        <mkdir dir="build/jar"/>
+        <jar destfile="build/jar/hdpexamples.jar" basedir="build/classes">
+            <manifest>
+                <attribute name="Main-Class" value="com.cloudxlab.wordcount.StubDriver"/>
+            </manifest>
+        </jar>
+    </target>
+
+	<target name="hiveudfcompile">
+        <mkdir dir="build/classes"/>
+        <javac srcdir="src" destdir="build/classes" classpathref="classpath"/>
+    </target>
+
+	<target name="hiveudfjar" depends="hiveudfcompile">
+        <mkdir dir="build/jar"/>
+        <jar destfile="build/jar/hdpexamples.jar" basedir="build/classes">
+        </jar>
+    </target>
+
+    <target name="run">
+        <java jar="build/jar/hdpexamples.jar" fork="true"/>
+    </target>
+
+</project>
