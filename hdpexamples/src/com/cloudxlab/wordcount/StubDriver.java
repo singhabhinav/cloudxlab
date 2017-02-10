@@ -25,10 +25,21 @@ public class StubDriver {
 		// 	System.exit(-1);
 		// }
 
-		Job job = Job.getInstance();
+
+
+		JobConf conf = new JobConf();
+		Job job = new Job(conf, "wordcount");
+
+		// Job job = Job.getInstance();
+
+		//See https://hadoop.apache.org/docs/r2.7.3/api/org/apache/hadoop/mapreduce/Job.html
+		//For all other functions and options
+
 		job.setJarByClass(StubDriver.class);
 		job.setMapperClass(StubMapper.class);
-		job.setReducerClass(StubReducer.class);
+		// job.setReducerClass(StubReducer.class);
+		//You can set number of reducers like this:
+		conf.setNumMapTasks(5);
 
 		//To change number of reducers you can use the following:
 		//job.setNumReduceTasks(2);
