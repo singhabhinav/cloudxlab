@@ -17,10 +17,10 @@ public class StubDriver {
 
 	public static void main(String[] args) throws Exception {
 
-		if (args.length != 3) {
-			System.out.printf("Usage: StubDriver <input dir> <output dir>\n");
-			System.exit(-1);
-		}
+		// if (args.length != 3) {
+		// 	System.out.printf("Usage: StubDriver <input dir> <output dir>\n");
+		// 	System.exit(-1);
+		// }
 
 		JobConf conf = new JobConf();
 		Job job = Job.getInstance(conf, "wordcount");
@@ -53,7 +53,7 @@ FileOutputFormat.setOutputPath(job, new Path("javamrout"));
 		boolean result = job.waitForCompletion(true);
 		System.exit(result ? 0 : 1);
 
-		//Let us say this is my string that I want to convert to ArrayWrite
+//Let us say this is my string that I want to convert to ArrayWrite
 //		String[] myStringArray = new String[]{"this", "that", "is"};
 //
 //		//It is can be done by creating a new instance of ArrayWritable and passing
