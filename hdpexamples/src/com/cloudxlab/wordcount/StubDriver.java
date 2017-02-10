@@ -37,7 +37,7 @@ public class StubDriver {
 
 		job.setJarByClass(StubDriver.class);
 		job.setMapperClass(StubMapper.class);
-		// job.setReducerClass(StubReducer.class);
+		job.setReducerClass(StubReducer.class);
 		//You can set number of reducers like this:
 		// conf.setNumMapTasks(5);
 

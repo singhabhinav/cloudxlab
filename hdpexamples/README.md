@@ -4,5 +4,7 @@
 git clone https://github.com/singhabhinav/cloudxlab.git
 cd cloudxlab/hdpexamples/
 ant jar
-hadoop jar build/jar/hdpexamples.jar my.StubDriver /data/mr/wordcount/input javamrout
+
+To Run wordcount MapReduce, use:
+hadoop jar build/jar/hdpexamples.jar com.cloudxlab.wordcount.StubDriver
 ~~~~
