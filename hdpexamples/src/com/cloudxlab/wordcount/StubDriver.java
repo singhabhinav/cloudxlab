@@ -17,7 +17,7 @@ public class StubDriver {
 
 	public static void main(String[] args) throws Exception {
 
-		if (args.length != 2) {
+		if (args.length != 3) {
 			System.out.printf("Usage: StubDriver <input dir> <output dir>\n");
 			System.exit(-1);
 		}
