@@ -17,6 +17,9 @@ public class StubDriver {
 
 	public static void main(String[] args) throws Exception {
 
+		//The arguments provided after the StubDriver are part of args
+		//You use this to take the name of input output file from the user.
+
 		// if (args.length != 3) {
 		// 	System.out.printf("Usage: StubDriver <input dir> <output dir>\n");
 		// 	System.exit(-1);
@@ -27,41 +30,38 @@ public class StubDriver {
 		job.setJarByClass(StubDriver.class);
 		job.setMapperClass(StubMapper.class);
 		job.setReducerClass(StubReducer.class);
-//		job.setPartitionerClass(StubPartitioner.class);
-//		job.setCombinerClass(StubCombiner.class);
 
-//		job.setNumReduceTasks(2);
-//		job.setInputFormatClass(NLinesInputFormat.class);
-//		conf.set("mapreduce.input.lineinputformat.linespermap", "100");
+		//To change number of reducers you can use the following:
+		//job.setNumReduceTasks(2);
 
-//		job.setInputFormatClass(FixedLengthInputFormat.class);
-//		FixedLengthInputFormat.setRecordLength(conf, 100);
+		//TO change the InputFormat class, use the following settings.
+		//If you want exactly N number of lines on every inputsplit
+		//job.setInputFormatClass(NLinesInputFormat.class);
+		//conf.set("mapreduce.input.lineinputformat.linespermap", "100");
 
-//		job.setInputFormatClass(NLinesInputFormat.class);
-//		conf.set("mapreduce.input.lineinputformat.linespermap", 1000+"");
+		//If you want to process file which is fixed input length format
+		//job.setInputFormatClass(FixedLengthInputFormat.class);
+		//FixedLengthInputFormat.setRecordLength(conf, 100);
+
+		//You can set partitioner this way or
+		//customize the distribution of keys on various reducers
+		//job.setPartitionerClass(StubPartitioner.class);
+
+		//You can define a combiner this way
+		//This is used for running a local reducer on every mapper node
+		//before transferring data to reducer node
+		//job.setCombinerClass(StubCombiner.class);
 
 		job.setOutputKeyClass(Text.class);
 		job.setOutputValueClass(LongWritable.class);
-//		job.setMapOutputKeyClass(Text.class);
-//		job.setMapOutputValueClass(LongWritable.class);
 
-FileInputFormat.addInputPath(job, new Path("/data/mr/wordcount/input/big.txt"));
-FileOutputFormat.setOutputPath(job, new Path("javamrout"));
+		FileInputFormat.addInputPath(job, new Path("/data/mr/wordcount/input/big.txt"));
+		FileOutputFormat.setOutputPath(job, new Path("javamrout"));
 
-//		FileInputFormat.addInputPath(job, new Path(args[1]));
-//		FileOutputFormat.setOutputPath(job, new Path(args[2]));
+		//To avoid hardcoding, you can take the values from command line args
+		// FileInputFormat.addInputPath(job, new Path(args[1]));
+		// FileOutputFormat.setOutputPath(job, new Path(args[2]));
 		boolean result = job.waitForCompletion(true);
 		System.exit(result ? 0 : 1);
-
-//Let us say this is my string that I want to convert to ArrayWrite
-//		String[] myStringArray = new String[]{"this", "that", "is"};
-//
-//		//It is can be done by creating a new instance of ArrayWritable and passing
-//		//your string array as argument
-//		ArrayWritable aw = new ArrayWritable(myStringArray);
-//
-//		//To convert it back to string array
-//		myStringArray = aw.toStrings();
-//
 	}
 }
