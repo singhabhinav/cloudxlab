@@ -18,7 +18,7 @@
         <mkdir dir="build/jar"/>
         <jar destfile="build/jar/hdpexamples.jar" basedir="build/classes">
             <manifest>
-                <attribute name="Main-Class" value="my.StubDriver"/>
+                <attribute name="Main-Class" value="com.cloudxlab.wordcount.StubDriver"/>
             </manifest>
         </jar>
     </target>
