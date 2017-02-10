@@ -27,12 +27,12 @@ public class StubDriver {
 		job.setJarByClass(StubDriver.class);
 		job.setMapperClass(StubMapper.class);
 		job.setReducerClass(StubReducer.class);
-		job.setPartitionerClass(StubPartitioner.class);
+//		job.setPartitionerClass(StubPartitioner.class);
 //		job.setCombinerClass(StubCombiner.class);
 
-		job.setNumReduceTasks(2);
-		job.setInputFormatClass(NLinesInputFormat.class);
-		conf.set("mapreduce.input.lineinputformat.linespermap", "100");
+//		job.setNumReduceTasks(2);
+//		job.setInputFormatClass(NLinesInputFormat.class);
+//		conf.set("mapreduce.input.lineinputformat.linespermap", "100");
 
 //		job.setInputFormatClass(FixedLengthInputFormat.class);
 //		FixedLengthInputFormat.setRecordLength(conf, 100);
@@ -42,11 +42,14 @@ public class StubDriver {
 
 		job.setOutputKeyClass(Text.class);
 		job.setOutputValueClass(LongWritable.class);
-		job.setMapOutputKeyClass(Text.class);
-		job.setMapOutputValueClass(LongWritable.class);
+//		job.setMapOutputKeyClass(Text.class);
+//		job.setMapOutputValueClass(LongWritable.class);
 
-		FileInputFormat.addInputPath(job, new Path(args[1]));
-		FileOutputFormat.setOutputPath(job, new Path(args[2]));
+FileInputFormat.addInputPath(job, new Path("/data/wordcount/input/big.txt"));
+FileOutputFormat.setOutputPath(job, new Path("javamrout"));
+
+//		FileInputFormat.addInputPath(job, new Path(args[1]));
+//		FileOutputFormat.setOutputPath(job, new Path(args[2]));
 		boolean result = job.waitForCompletion(true);
 		System.exit(result ? 0 : 1);
 
