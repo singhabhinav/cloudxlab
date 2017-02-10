@@ -25,8 +25,7 @@ public class StubDriver {
 		// 	System.exit(-1);
 		// }
 
-		JobConf conf = new JobConf();
-		Job job = Job.getInstance(conf, "wordcount");
+		Job job = Job.getInstance();
 		job.setJarByClass(StubDriver.class);
 		job.setMapperClass(StubMapper.class);
 		job.setReducerClass(StubReducer.class);
