@@ -5,18 +5,20 @@ Find anagrams in a text file
 '''
 
 import sys
+import re
 
 
 def read_input(file):
     for line in file:
-        yield line.split()
+        line = re.split('[^a-z]+', line.lower())
+        yield line
 
 
 def main(separator='\t'):
-    data = read_input(sys.stdin)
-    for words in data:
+    for words in read_input(sys.stdin):
         for word in words:
-            print '%s%s%s' % (''.join(sorted(word)), separator, word)
+            if len(word) > 0:
+                print '%s%s%s' % (''.join(sorted(word)), separator, word)
 
 if __name__ == "__main__":
     main()
