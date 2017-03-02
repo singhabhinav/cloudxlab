@@ -13,9 +13,9 @@ def read_mapper_output(file, separator='\t'):
 def main(separator='\t'):
     data = read_mapper_output(sys.stdin, separator=separator)
     for current_word, group in groupby(data, itemgetter(0)):
-            anagram_list = list(set(anagram for current_word, anagram in group))
-            if len(anagram_list) > 1:
-                print "%s" % (anagram_list)
+        anagram_list = list(set(anagram for current_word, anagram in group))
+        if len(anagram_list) > 2:
+            print "%s\t%s" % (len(anagram_list), anagram_list)
 
 
 if __name__ == "__main__":
