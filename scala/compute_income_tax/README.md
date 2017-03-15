@@ -6,12 +6,19 @@ your for the income in the range of INR 300001 - 400000, 20% taxes for your
 income in the range of INR 400001 - 500000 and so on
 
 **Income(Range)       Tax**
+
 0 - 300,000         0
+
 300001 - 400000     10%
+
 400001 - 500000     20%
+
 500001 - onwards    30%
 
 **Testcases-**
+
 If your income is 400000, your function should return 10000
+
 If your income is 450000, your function should return 20000
+
 If your income is 550000, your function should return 45000
