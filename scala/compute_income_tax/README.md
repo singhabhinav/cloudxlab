@@ -1,9 +1,9 @@
 Write a function to compute income tax. We have shown two approaches. Feel free
 to write your own logic to compute tax. Income is displayed in Indian currency.
 As shown below in the slabs table, if your annual income is less than INR
-300,000 you will not have to pay any taxes. You will have to pay 10% taxes if
-your for the income in the range of INR 300001 - 400000, 20% taxes for your
-income in the range of INR 400001 - 500000 and so on
+300,000 you will not have to pay any taxes. You will have to pay 10% taxes for
+the income in the range of INR 300,001 - 400,000, 20% taxes for the income in
+the range of INR 400,001 - 500,000 and so on
 
 **Income(Range)       Tax**
 
