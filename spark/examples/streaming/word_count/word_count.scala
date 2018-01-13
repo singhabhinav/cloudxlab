@@ -3,8 +3,9 @@
 import org.apache.spark._
 import org.apache.spark.streaming._
 
+sc.setLogLevel(ERROR)
 // Create a local StreamingContext with batch interval of 10 second
-val ssc = new StreamingContext(sc, Seconds(10))
+val ssc = new StreamingContext(sc, Seconds(2))
 
 // Create a DStream that will connect to hostname:port, like localhost:9999
 val lines = ssc.socketTextStream("localhost", 9999)
