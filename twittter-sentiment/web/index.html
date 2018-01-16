@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Twitter Streaming Dashboard</title>
+		<link rel="stylesheet" type="text/css" href="css/app.css">
+		<link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap.min.css">
+		<script src="js/jquery/jquery.min.js"></script>
+		<script src="js/bootstrap/bootstrap.min.js"></script>
+		<script src="js/highcharts/highcharts.min.js"></script>
+		<script src="/socket.io/socket.io.js"></script>
+		<script src="js/client.js"></script>
+	</head>
+	<body>
+		<div class="container-fluid">
+			<div class="well well-sm">
+				<div class="dashboarHeader">Twitter Streaming Dashboard</div> 
+				<p class="subheader">Dashboard will show three panels, left side panel will show popular top ten hash tags in the last 60 seconds, centre panel will show sentiment analysis on the selected hashtag for the tweets and right side panel will show the graph by counting positive, negative and neutral sentiments for the hashtag.</p> 
+			</div>
+			
+			<div class="row">
+				<div class="col-md-6">
+					<div class="panel panel-default">
+						<div class="panel-heading"><div class="header">Popular Hash Tags Graph</div></div>
+						<div class="panel-body chartHeight">
+							<div id="chartHolder">
+							</div>
+						</div>
+					</div>
+				</div>				
+				<div class="col-md-3">
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<label class="textColor displayBlock" for="hashTagId">Enter Hash Tag for Sentiment Analysis:</label><input type="text" class="textbox" name="hashTag" id="hashTagId" />
+							<button class="btn btn-default"onclick="setHashTag()">Show Tweets</button>
+						</div>
+						<div class="panel-body sentimentHeight scrollbar" id="sentimentPanelBody">
+							<div id="sentimentHolder">
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<div class="col-md-3">
+					<div class="panel panel-default">
+						<div class="panel-heading"><div class="header">Sentiment Analysis Graph</div></div>
+						<div class="panel-body chartHeight">
+							<div id="sentimentHolderGraph">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="copyright">
+				&#169;2016-2017, Developed by Manjunath Kempaiah
+			</div>
+		</div>
+	</body>
+</html>
