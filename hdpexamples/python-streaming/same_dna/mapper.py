@@ -5,7 +5,7 @@ Find people having same sequence of DNA
 '''
 
 import sys
-
+import re
 
 def read_input(file):
     for line in file:
